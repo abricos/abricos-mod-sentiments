@@ -1,0 +1,27 @@
+.mod-sentiments .editor {
+    position: relative;
+}
+
+.mod-sentiments .editor .iit {
+    margin-top: .5em;
+    margin-bottom: 1.5em;
+    margin-left: .5em;
+}
+
+.mod-sentiments .editor .yui-navset {
+    padding-top: 6px;
+}
+
+.mod-sentiments .editor .buttons {
+    position: absolute;
+    top: 0;
+    right: 10px;
+}
+
+.mod-sentiments .editor .nimage {
+    margin: 3px;
+    overflow-y: auto;
+    width: 300px;
+    height: 300px;
+    border: 1px solid #CBCBCB;
+}

@@ -1,0 +1,30 @@
+<!--[*]
+[tt=main][/tt]
+[script]view.php[/script]
+[bkvar=notpub]{#sentiments.notpub}[/bkvar]
+
+[bkvar=title]<h1>{v#val}</h1>[/bkvar]
+
+[bkvar=date]<div class="date">{v#val}</div>[/bkvar]
+[bkvar=source]
+	<div class="source">
+		{#sentiments.source}: <a href="{v#lnk}">{v#nm}</a>
+	</div>
+[/bkvar]
+[bkvar=image]<div class="image"><img src='{v#src}' />[/bkvar]</div>
+[bkvar=intro]<div class="intro">{v#val}</div>[/bkvar]
+[bkvar=body]<div class="body">{v#val}</div>[/bkvar]
+
+[bkvar=notfound]<div class="sentimentspage">Настроение не найдена</div>[/bkvar]
+
+[*]-->
+<div class="mod-sentiments bd">
+	[bkvar]date[/bkvar]
+	[bkvar]title[/bkvar]
+	[bkvar]image[/bkvar]
+	<div class="bd">
+		[bkvar]intro[/bkvar]
+		[bkvar]body[/bkvar]
+	</div>
+	[bkvar]source[/bkvar]
+</div>

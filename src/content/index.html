@@ -1,0 +1,27 @@
+<!--[*]
+[tt=main][/tt]
+
+[script]index.php[/script]
+[mcss=sitemap]sitemap.css[/mcss]
+[mcss=sentiments]sentiments.css[/mcss]
+
+[ph=sentiments:page_count]10[/ph]
+[ph=sentiments:date_format]Y-m-d[/ph]
+
+[bkvar=lst][/bkvar]
+[bkvar=row]
+	<dt>{v#date}</dt>
+	<dd>
+		<a class="title" href="{v#link}">{v#title}</a>
+		{v#intro}
+	</dd>
+[/bkvar]
+
+[*]-->
+<div class="mod-sentiments bd">
+	<div class="tlsentiments">
+		<h2>{#title} <span class="sentimentsblock-rssicon"></span></h2>
+	</div>
+	<dl class="sentimentslist">[bkvar]lst[/bkvar]</dl>
+	[mod]sitemap:paginator[/mod]
+</div>

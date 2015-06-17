@@ -1,0 +1,22 @@
+<!--[*]
+[script]sentimentsblock.php[/script]
+[mod=sentiments]lastsentiments|count=3[/mod]
+[p=hideintro][/p]
+[p=showempty][/p]
+
+[bkvar=rss]
+	<span class="rssicon">
+		<a href='/rss/sentiments/' title='Канал новостей в формате RSS'>
+			<img src='/modules/rss/images/rss-icon-16px-op50.gif' />
+		</a>
+	</span>
+[/bkvar]
+
+
+[*]-->
+<div class="mod-sentiments box">
+	<div class="sentimentsblock">
+		<h3>{#sentiments.title} {v#rss}</h3>
+		[mod]sentiments:lastsentiments[/mod]
+	</div>
+</div>
