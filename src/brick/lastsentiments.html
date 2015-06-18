@@ -3,19 +3,28 @@
 [mcss=sentiments]sentiments.css[/mcss]
 [bkvar=result][/bkvar]
 [bkvar=row]
-	<li>
-		<span class="date">{v#date}</span>
-		<a class="title" href="{v#link}">{v#title}</a>
+	<div class="sentimentrow">
 		<span class="intro">{v#intro}</span>
-	</li>
+		<div class="text-right">
+		    <a class="title" href="{v#link}">{v#title}</a>
+		</div>
+	</div>
+    <hr />
 [/bkvar]
 [bkvar=fullsentimentslink]/sentiments/[/bkvar]
 [p=count]3[/p]
 [p=hideintro][/p]
 [*]-->
-<ul class="lastsentiments">
-	[bkvar]result[/bkvar]
-	<li class="fullsentiments">
-		<a href="[bkvar]fullsentimentslink[/bkvar]">{#sentiments.pubcolumnblock_allsentiments}</a>
-	</li>
-</ul>
+<div class="lastsentiments">
+    [bkvar]result[/bkvar]
+    <div class="row">
+        <div class="col-md-6">
+            <a href="/feedback/">Добавить отзыв</a>
+        </div>
+        <div class="col-md-6">
+            <div class="fullsentiments text-right">
+                <a href="[bkvar]fullsentimentslink[/bkvar]">{#pubcolumnblock_allsentiments}</a>
+            </div>
+        </div>
+    </div>
+</div>
