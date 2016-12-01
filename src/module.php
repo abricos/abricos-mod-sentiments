@@ -1,12 +1,10 @@
 <?php
 /**
- * Модуль "Sentiments"
- *
  * @package Abricos
  * @subpackage Sentiments
- * @copyright Copyright (C) 2008 Abricos All rights reserved.
- * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.php
- * @author Alexander Kuzmin (roosit@abricos.org)
+ * @copyright 2012-2016 Alexander Kuzmin
+ * @license http://opensource.org/licenses/mit-license.php MIT License
+ * @author Alexander Kuzmin <roosit@abricos.org>
  */
 
 /**
@@ -18,16 +16,14 @@
 class SentimentsModule extends Ab_Module {
 
     /**
-     * @var SentimentsModule
+     * @deprecated
      */
     public static $instance;
 
-    private $_manager = null;
-
-    public function SentimentsModule(){
+    public function __construct(){
         SentimentsModule::$instance = $this;
 
-        $this->version = "0.2.0";
+        $this->version = "0.3.0";
         $this->name = "sentiments";
         $this->takelink = "sentiments";
 
@@ -46,41 +42,6 @@ class SentimentsModule extends Ab_Module {
             return "view";
         }
         return "index";
-    }
-
-    /**
-     * Получить менеджер
-     *
-     * @return SentimentsManager
-     */
-    public function GetManager(){
-        if (is_null($this->_manager)){
-            require_once 'includes/manager.php';
-            $this->_manager = new SentimentsManager($this);
-        }
-        return $this->_manager;
-    }
-
-    public function GetLink($sentimentsid){
-        return Abricos::$adress->host."/".$this->takelink."/".$sentimentsid."/";
-    }
-
-    public function RSS_GetItemList(){
-        $ret = array();
-
-        $i18n = $this->GetI18n();
-
-        $rows = $this->GetManager()->SentimentsList(1, 10);
-        while (($row = $this->registry->db->fetch_array($rows))){
-            $item = new RSSItem($row['tl'], $this->GetLink($row['id']), $row['intro'], $row['dp']);
-            $item->modTitle = $i18n['title'];
-            array_push($ret, $item);
-        }
-        return $ret;
-    }
-
-    public function RssMetaLink(){
-        return Abricos::$adress->host."/rss/sentiments/";
     }
 }
 
@@ -114,7 +75,4 @@ class SentimentsPermission extends Ab_UserPermission {
     }
 }
 
-Abricos::GetModule('comment');
 Abricos::ModuleRegister(new SentimentsModule());
-
-?>

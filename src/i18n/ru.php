@@ -7,5 +7,3 @@ return array(
     'pubcolumnblock_allsentiments' => 'Все отзывы',
     'viewbedit' => 'Редактировать'
 );
-
-?>

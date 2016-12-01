@@ -2,24 +2,19 @@
 /**
  * @package Abricos
  * @subpackage Sentiments
- * @copyright Copyright (C) 2008 Abricos. All rights reserved.
- * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.php
- * @author Alexander Kuzmin (roosit@abricos.org)
+ * @copyright 2012-2016 Alexander Kuzmin
+ * @license http://opensource.org/licenses/mit-license.php MIT License
+ * @author Alexander Kuzmin <roosit@abricos.org>
  */
 
 require_once 'dbquery.php';
 
+/**
+ * Class SentimentsManager
+ *
+ * @property SentimentsModule $module
+ */
 class SentimentsManager extends Ab_ModuleManager {
-
-    /**
-     *
-     * @var SentimentsModule
-     */
-    public $module = null;
-
-    public function __construct(SentimentsModule $module){
-        parent::__construct($module);
-    }
 
     /**
      * Роль администратора новостей: редактор всех новостей
@@ -57,7 +52,7 @@ class SentimentsManager extends Ab_ModuleManager {
         }
 
         $info = SentimentsQuery::SentimentsInfo($this->db, $newid);
-        if (empty($info) || $info['uid'] != $this->userid){
+        if (empty($info) || $info['uid'] != Abricos::$user->id){
             return false;
         }
         return true;
@@ -112,30 +107,30 @@ class SentimentsManager extends Ab_ModuleManager {
         return null;
     }
 
-    /* * * * * * * * * * * * Чтение новостей * * * * * * * * * * * */
+    /* * * * * * * * * * * * Чтение  * * * * * * * * * * * */
 
     public function Sentiments($sentimentsid, $retarray = false){
         if (!$this->IsViewRole()){
             return;
         }
-        return SentimentsQuery::Sentiments($this->db, $sentimentsid, $this->userid, $retarray);
+        return SentimentsQuery::Sentiments($this->db, $sentimentsid, Abricos::$user->id, $retarray);
     }
 
     public function SentimentsList($page = 1, $limit = 10){
         if (!$this->IsViewRole()){
             return;
         }
-        return SentimentsQuery::SentimentsList($this->db, $this->userid, $page, $limit);
+        return SentimentsQuery::SentimentsList($this->db, Abricos::$user->id, $page, $limit);
     }
 
     public function SentimentsCount($retvalue = false){
         if (!$this->IsViewRole()){
             return;
         }
-        return SentimentsQuery::SentimentsCount($this->db, $this->userid, $retvalue);
+        return SentimentsQuery::SentimentsCount($this->db, Abricos::$user->id, $retvalue);
     }
 
-    /* * * * * * * * * * * * Управление новостями * * * * * * * * * * * */
+    /* * * * * * * * * * * * Управление  * * * * * * * * * * * */
 
     /**
      * Добавить настроение
@@ -146,7 +141,7 @@ class SentimentsManager extends Ab_ModuleManager {
         if (!$this->IsWriteRole()){
             return;
         }
-        SentimentsQuery::SentimentsAppend($this->db, $this->userid, $d);
+        SentimentsQuery::SentimentsAppend($this->db, Abricos::$user->id, $d);
     }
 
     /**
@@ -179,15 +174,13 @@ class SentimentsManager extends Ab_ModuleManager {
         if (!$this->IsWriteRole()){
             return;
         }
-        SentimentsQuery::SentimentsRecycleClear($this->db, $this->userid);
+        SentimentsQuery::SentimentsRecycleClear($this->db, Abricos::$user->id);
     }
 
     public function SentimentsPublish($id){
         if (!$this->IsSentimentsWriteAccess($id)){
             return;
         }
-        SentimentsQuery::SentimentsPublish($this->db, $id, $this->userid);
+        SentimentsQuery::SentimentsPublish($this->db, $id, Abricos::$user->id);
     }
 }
-
-?>

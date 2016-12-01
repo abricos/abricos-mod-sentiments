@@ -1,28 +1,17 @@
 <!--[*]
-[script]sentimentsblock.php[/script]
+[script]brick/sentimentsblock.php[/script]
+
 [mod=sentiments]lastsentiments|count=3[/mod]
 [p=hideintro][/p]
 [p=showempty][/p]
 
-[bkvar=rss]
-	<span class="rssicon">
-		<a href='/rss/sentiments/' title='Канал в формате RSS'>
-			<img src='/modules/rss/images/rss-icon-16px-op50.gif' />
-		</a>
-	</span>
-[/bkvar]
-
 [*]-->
-<div class="mod-sentiments">
-    <div class="sentimentsblock">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">{#title} {v#rss}</h3>
-            </div>
+<div class="aw-sentiments sentimentsBlock panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">{#title}</h3>
+    </div>
 
-            <div class="panel-body">
-                [mod]sentiments:lastsentiments[/mod]
-            </div>
-        </div>
+    <div class="panel-body">
+        [mod]sentiments:lastsentiments[/mod]
     </div>
 </div>

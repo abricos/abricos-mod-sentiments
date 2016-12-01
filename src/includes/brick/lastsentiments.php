@@ -1,13 +1,10 @@
 <?php
 /**
- * Список последних новостей
- *
- * @version $Id: lastsentiments.php 1475 2012-04-11 12:08:12Z roosit $
  * @package Abricos
  * @subpackage Sentiments
- * @copyright Copyright (C) 2008 Abricos All rights reserved.
- * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.php
- * @author Alexander Kuzmin (roosit@abricos.org)
+ * @copyright 2012-2016 Alexander Kuzmin
+ * @license http://opensource.org/licenses/mit-license.php MIT License
+ * @author Alexander Kuzmin <roosit@abricos.org>
  */
 
 $brick = Brick::$builder->brick;
@@ -40,6 +37,3 @@ while (($row = Abricos::$db->fetch_array($rows))){
 
 $brick->viewcount = $viewcount;
 $brick->param->var['result'] = $lst;
-
-
-?>

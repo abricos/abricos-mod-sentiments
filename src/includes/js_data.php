@@ -1,13 +1,10 @@
 <?php
 /**
- * Обработка запросов DataSet
- *
- * @version $Id: js_data.php 1413 2012-02-02 09:09:11Z roosit $
  * @package Abricos
  * @subpackage Sentiments
- * @copyright Copyright (C) 2008 Abricos All rights reserved.
- * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.php
- * @author Alexander Kuzmin (roosit@abricos.org)
+ * @copyright 2012-2016 Alexander Kuzmin
+ * @license http://opensource.org/licenses/mit-license.php MIT License
+ * @author Alexander Kuzmin <roosit@abricos.org>
  */
 
 $brick = Brick::$builder->brick;
@@ -61,5 +58,3 @@ foreach ($ds->ts as $ts){
 }
 
 $brick->param->var['obj'] = json_encode($ret);
-
-?>
